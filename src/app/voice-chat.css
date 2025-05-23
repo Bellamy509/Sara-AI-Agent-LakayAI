@@ -1,0 +1,306 @@
+/* Styles améliorés pour le chat window et le champ de texte */
+
+/* Amélioration du conteneur principal du chat */
+.copilotkit-chat {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+/* Amélioration du champ de saisie avec style moderne */
+.copilotkit-chat-input {
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 50%, rgba(243,244,246,0.95) 100%) !important;
+  border-radius: 20px !important;
+  border: 3px solid transparent !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    0 20px 40px rgba(139, 92, 246, 0.12),
+    0 8px 25px rgba(59, 130, 246, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05) !important;
+  margin: 20px !important;
+  padding: 12px !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+}
+
+.copilotkit-chat-input::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  background: linear-gradient(135deg, #8B5CF6, #3B82F6, #06B6D4, #10B981) !important;
+  border-radius: 20px !important;
+  z-index: -1 !important;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease !important;
+}
+
+.copilotkit-chat-input::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1)) !important;
+  border-radius: 17px !important;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease !important;
+  pointer-events: none !important;
+}
+
+.copilotkit-chat-input:focus-within {
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 
+    0 25px 50px rgba(139, 92, 246, 0.25),
+    0 15px 35px rgba(59, 130, 246, 0.15),
+    0 0 0 1px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.copilotkit-chat-input:focus-within::before {
+  opacity: 1 !important;
+  animation: borderGlow 2s ease-in-out infinite alternate !important;
+}
+
+.copilotkit-chat-input:focus-within::after {
+  opacity: 1 !important;
+}
+
+@keyframes borderGlow {
+  0% {
+    background: linear-gradient(135deg, #8B5CF6, #3B82F6, #06B6D4, #10B981) !important;
+  }
+  50% {
+    background: linear-gradient(135deg, #A855F7, #2563EB, #0891B2, #059669) !important;
+  }
+  100% {
+    background: linear-gradient(135deg, #7C3AED, #1D4ED8, #0E7490, #047857) !important;
+  }
+}
+
+.copilotkit-chat-input textarea {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 16px !important;
+  padding: 20px 24px !important;
+  padding-right: 130px !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #1F2937 !important;
+  font-weight: 500 !important;
+  resize: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  width: calc(100% - 130px) !important;
+  transition: all 0.3s ease !important;
+  letter-spacing: 0.01em !important;
+}
+
+.copilotkit-chat-input textarea:focus {
+  color: #111827 !important;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.copilotkit-chat-input textarea::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
+}
+
+.copilotkit-chat-input textarea:focus::placeholder {
+  opacity: 0.5 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Amélioration du bouton d'envoi avec style moderne */
+.copilotkit-chat-input button[type="submit"] {
+  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 50%, #06B6D4 100%) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 14px 18px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 
+    0 8px 25px rgba(139, 92, 246, 0.4),
+    0 4px 15px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin-left: 10px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.copilotkit-chat-input button[type="submit"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+  transition: left 0.6s ease !important;
+}
+
+.copilotkit-chat-input button[type="submit"]:hover::before {
+  left: 100% !important;
+}
+
+.copilotkit-chat-input button[type="submit"]:hover {
+  background: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #0891B2 100%) !important;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 
+    0 12px 35px rgba(139, 92, 246, 0.5),
+    0 8px 25px rgba(59, 130, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.copilotkit-chat-input button[type="submit"]:active {
+  transform: translateY(-1px) scale(1.02) !important;
+  transition: all 0.1s ease !important;
+}
+
+/* Amélioration des messages du chat */
+.copilotkit-chat-messages {
+  padding: 20px !important;
+  max-height: calc(100vh - 200px) !important;
+  overflow-y: auto !important;
+}
+
+.copilotkit-chat-messages::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.copilotkit-chat-messages::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05) !important;
+  border-radius: 3px !important;
+}
+
+.copilotkit-chat-messages::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8B5CF6, #3B82F6) !important;
+  border-radius: 3px !important;
+}
+
+/* Styles pour les bulles de messages */
+.copilotkit-chat-message {
+  margin-bottom: 16px !important;
+  animation: fadeInUp 0.3s ease-out !important;
+}
+
+.copilotkit-chat-message.user {
+  text-align: right !important;
+}
+
+.copilotkit-chat-message.user .copilotkit-chat-message-content {
+  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%) !important;
+  color: white !important;
+  border-radius: 18px 18px 4px 18px !important;
+  padding: 12px 18px !important;
+  display: inline-block !important;
+  max-width: 80% !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3) !important;
+}
+
+.copilotkit-chat-message.assistant .copilotkit-chat-message-content {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%) !important;
+  color: #374151 !important;
+  border-radius: 18px 18px 18px 4px !important;
+  padding: 12px 18px !important;
+  display: inline-block !important;
+  max-width: 80% !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+  border: 1px solid rgba(139, 92, 246, 0.1) !important;
+}
+
+/* Animation pour les nouveaux messages */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styles pour le bouton vocal repositionné à côté du bouton d'envoi */
+.voice-recognition-btn {
+  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  color: white !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3) !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px) !important;
+  height: fit-content !important;
+  min-height: 44px !important;
+}
+
+.voice-recognition-btn:hover {
+  background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4) !important;
+}
+
+.voice-recognition-btn.recording {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
+  animation: pulseGlowCompact 1.5s infinite !important;
+}
+
+.voice-recognition-btn.processing {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+  animation: shimmer 2s infinite !important;
+}
+
+@keyframes pulseGlowCompact {
+  0%, 100% { 
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4), 0 0 15px rgba(239, 68, 68, 0.3) !important;
+    transform: scale(1) !important;
+  }
+  50% { 
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.5) !important;
+    transform: scale(1.05) !important;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .copilotkit-chat-input {
+    margin: 12px !important;
+  }
+  
+  .copilotkit-chat-input textarea {
+    padding: 16px 20px !important;
+    padding-right: 110px !important;
+    font-size: 14px !important;
+  }
+  
+  .voice-recognition-btn {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 40px !important;
+  }
+}

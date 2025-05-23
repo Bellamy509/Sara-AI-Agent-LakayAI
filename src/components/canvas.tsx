@@ -2,7 +2,7 @@
 
 import * as Skeletons from "@/components/skeletons";
 import { Settings } from "lucide-react";
-import React, { Suspense, useState, useContext } from "react";
+import React, { Suspense, useState, useContext, useEffect } from "react";
 import { ChatWindow } from "./chat-window";
 import { MCPConfigModal } from "./mcp-config-modal";
 import { TodoProvider } from "@/contexts/TodoContext";
@@ -11,9 +11,20 @@ import VisualRepresentation from "./VisualRepresentation";
 import { useCopilotChatSuggestions } from "@copilotkit/react-ui";
 import { ServerConfigsContext } from "@/providers/Providers";
 import { motion } from "framer-motion";
+import UserProfileMenu from "./UserProfileMenu";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Canvas() {
   const [showMCPConfigModal, setShowMCPConfigModal] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+    };
+    fetchUser();
+  }, []);
   useCopilotChatSuggestions(
     {
       instructions:
@@ -38,14 +49,17 @@ export default function Canvas() {
             </span>
             <h1 className="text-2xl font-bold text-[#372D4E] tracking-wide">Lakay AI</h1>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.08, boxShadow: "0 4px 24px 0 rgba(80, 120, 255, 0.25)" }}
-            whileTap={{ scale: 0.96 }}
-            onClick={() => setShowMCPConfigModal(true)}
-            className="bg-gradient-to-r from-[#A23CDC] to-[#6217B0] text-white font-semibold px-6 py-2 rounded-full shadow hover:scale-105 transition-all flex items-center gap-2 border-none text-base"
-          >
-            <span className="font-medium">App Store</span>
-          </motion.button>
+          <div className="flex items-center gap-4">
+            <motion.button
+              whileHover={{ scale: 1.08, boxShadow: "0 4px 24px 0 rgba(80, 120, 255, 0.25)" }}
+              whileTap={{ scale: 0.96 }}
+              onClick={() => setShowMCPConfigModal(true)}
+              className="bg-gradient-to-r from-[#A23CDC] to-[#6217B0] text-white font-semibold px-6 py-2 rounded-full shadow hover:scale-105 transition-all flex items-center gap-2 border-none text-base"
+            >
+              <span className="font-medium">App Store</span>
+            </motion.button>
+            <UserProfileMenu />
+          </div>
         </motion.header>
         <main className="flex-1 flex items-center justify-center py-0 bg-transparent">
           <motion.div
@@ -64,7 +78,13 @@ export default function Canvas() {
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#A23CDC] to-[#B3A0BF] flex items-center justify-center mb-4 shadow-lg">
                 <Settings className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 text-center">Good Afternoon, Fritz Gerald</h2>
+              <h2 className="text-2xl font-bold text-gray-900 text-center">
+                Good Afternoon, {user?.user_metadata?.first_name && user?.user_metadata?.last_name 
+                  ? `${user.user_metadata.first_name} ${user.user_metadata.last_name}` 
+                  : user?.user_metadata?.first_name 
+                  ? user.user_metadata.first_name 
+                  : 'User'}
+              </h2>
               <p className="text-lg text-center text-[#A23CDC] font-semibold mt-1">What's on <span className="font-bold">your mind?</span></p>
             </motion.div>
             <div className="flex-1 overflow-y-auto pb-40 px-0 sm:px-0">

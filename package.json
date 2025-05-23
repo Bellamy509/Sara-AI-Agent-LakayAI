@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:analyze": "ANALYZE=true npm run build",
+    "export": "next export",
+    "build:production": "NODE_ENV=production npm run build",
+    "vercel-build": "npm run build",
+    "build:complete": "chmod +x scripts/build-complete.sh && ./scripts/build-complete.sh",
+    "build:safe": "npm run build:complete"
   },
   "dependencies": {
     "@copilotkit/react-core": "1.8.9",
@@ -21,10 +27,12 @@
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "@supabase/supabase-js": "^2.49.8",
     "@tanstack/react-query": "^5.66.0",
     "@tanstack/react-query-devtools": "^5.66.0",
     "@types/dagre": "^0.7.52",
     "@types/leaflet": "^1.9.16",
+    "@types/uuid": "^10.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dagre": "^0.8.5",
@@ -39,7 +47,8 @@
     "react-markdown": "^9.0.3",
     "reactflow": "^11.11.4",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
